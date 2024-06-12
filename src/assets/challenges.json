@@ -1,0 +1,42 @@
+[
+  {
+    "id": "01ec2dbc-a326-40ee-9774-a6c7bd67c616",
+    "name": "Sala & Mezanino",
+    "shortName": "sala",
+    "summary": "Coisas que precisam ser feitas na sala, no mezanino ou nos quartos",
+    "description": "Coisas que precisam ser feitas na sala, no mezanino ou nos quartos",
+    "emoji": "🎲"
+  },
+  {
+    "id": "11530519-48d9-457b-876f-ed1b2eb7015f",
+    "name": "Cozinha",
+    "shortName": "cozinha",
+    "summary": "As tarefas da cozinha",
+    "description": "As tarefas da cozinha",
+    "emoji": "👨🏻‍🍳"
+  },
+  {
+    "id": "6f111387-ad3d-4b89-91b5-07f859a17897",
+    "name": "The Office",
+    "shortName": "xcritorio",
+    "summary": "Tarefas do centro de convenções Michael Scott",
+    "description": "Tarefas do centro de convenções Michael Scott",
+    "emoji": "💻"
+  },
+  {
+    "id": "ff10e94f-9995-418d-b81e-d71e4973df08",
+    "name": "Área Externa",
+    "shortName": "exterior",
+    "summary": "Tarefas da entrada, garagem, jardim, ateliê, lavanderia e varal",
+    "description": "Tarefas da entrada, garagem, jardim, ateliê, lavanderia e varal",
+    "emoji": "👙"
+  },
+  {
+    "id": "064d8766-9970-480d-9510-6d74ea9ae1a9",
+    "name": "Onipresente",
+    "shortName": "oni",
+    "summary": "Tarefas que não tem um lugar específico para acontecer",
+    "description": "Tarefas que não tem um lugar específico para acontecer",
+    "emoji": "♾️"
+  }
+]

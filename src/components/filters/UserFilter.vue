@@ -1,0 +1,20 @@
+<template>
+  <v-sheet class="bg-transparent d-flex ga-2">
+    <v-chip
+      v-for="user in users"
+      @click="$emit('changePerson', user.id)"
+      :color="currentPersonFilter === user.id ? 'purple-darken-4' : undefined"
+      :variant="currentPersonFilter === user.id ? 'flat' : undefined"
+    >
+      {{ user.label }}
+    </v-chip>
+  </v-sheet>
+</template>
+
+<script setup lang="ts">
+import users from "../../assets/users.json";
+
+const props = defineProps({
+  currentPersonFilter: String,
+});
+</script>
