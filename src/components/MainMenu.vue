@@ -13,9 +13,8 @@
 
 <script setup lang="ts">
 const menuItems = [
-  { destiny: "/", emoji: "📆" },
+  { destiny: "/", emoji: "🏠" },
   { destiny: "/create-task", emoji: "✏️" },
-  { destiny: "/history-view", emoji: "📜" },
   { destiny: "/", emoji: "📊", disabled: true },
   { destiny: "/fix", emoji: "🔧" },
 ];

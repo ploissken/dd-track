@@ -17,6 +17,7 @@ declare module 'vue' {
     HistoryContainer: typeof import('./src/components/containers/HistoryContainer.vue')['default']
     HistoryFilters: typeof import('./src/components/filters/HistoryFilters.vue')['default']
     HistoryTable: typeof import('./src/components/HistoryTable.vue')['default']
+    HomeContainer: typeof import('./src/components/containers/HomeContainer.vue')['default']
     MainMenu: typeof import('./src/components/MainMenu.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

@@ -1,3 +1,3 @@
 <template>
-  <CalendarContainer />
+  <HomeContainer />
 </template>
