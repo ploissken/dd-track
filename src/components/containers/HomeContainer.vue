@@ -1,20 +1,16 @@
 <template>
-  <v-container class="fill-height p-0 m-0 d-flex align-start justify-start">
-    <v-col cols="12">
+  <v-container class="fill-height d-flex align-start justify-start">
+    <v-col cols="12" class="ma-0 pa-0">
       <CalendarFilters
-        @changeView="(view: string) => (type = view)"
+        @change:view="(view: string) => (viewType = view)"
         @changePerson="(id: string) => (currentPersonFilter = id)"
         @changeChallenge="(id: string) => (currentChallengeFilter = id)"
         @filter-by:task="(text: string) => (currentTaskFilter = text)"
         :challenges="challenges"
         :current-person-filter="currentPersonFilter"
         :current-challenge-filter="currentChallengeFilter"
+        :view-type="viewType"
       />
-      <v-btn-toggle v-model="taskLevel" color="deep-purple" rounded="0" group>
-        <v-btn value="calendar"> 📆 </v-btn>
-
-        <v-btn value="table"> 📜 </v-btn>
-      </v-btn-toggle>
     </v-col>
     <v-row class="justify-center">
       <v-col
@@ -24,13 +20,13 @@
       >
         <v-progress-circular indeterminate />
       </v-col>
-      <v-col v-else cols="12">
+      <v-col v-else cols="12" class="ma-0 pa-0">
         <HistoryContainer
-          v-if="taskLevel === 'table'"
+          v-if="viewType === 'table'"
           :filteredEvents="filteredEvents"
         />
         <CalendarContainer
-          v-if="taskLevel === 'calendar'"
+          v-if="viewType === 'calendar'"
           :filteredEvents="calendarEvents"
         />
       </v-col>
@@ -52,7 +48,7 @@ const currentChallengeFilter = ref(challenges[1].id);
 const currentTaskFilter = ref("");
 const currentPersonFilter = ref(BOD_ID);
 const rawTaskData = ref([]);
-const taskLevel = ref("table");
+const viewType = ref("calendar");
 
 export interface CalendarEvent {
   title: String;
@@ -69,9 +65,16 @@ const filteredEvents = computed((): any[] => {
           ({ user_id }) => user_id === currentPersonFilter.value,
         );
 
-  const challengeFilteredTasks = personFilteredTasks.filter(
-    ({ challenge_id }) => challenge_id === currentChallengeFilter.value,
-  );
+  const challengeFilteredTasks =
+    currentChallengeFilter.value === "ALL_CHALLENGES"
+      ? personFilteredTasks
+      : currentChallengeFilter.value === "PERSONAL_CHALLENGES"
+        ? personFilteredTasks.filter(
+            ({ challenge_id }) => challenge_id === null,
+          )
+        : personFilteredTasks.filter(
+            ({ challenge_id }) => challenge_id === currentChallengeFilter.value,
+          );
 
   const textFilteredTasks = challengeFilteredTasks.filter(({ task_text }) =>
     (task_text as string)

@@ -12,7 +12,6 @@ declare module 'vue' {
     ChallengeFilter: typeof import('./src/components/filters/ChallengeFilter.vue')['default']
     CreateTaskContainer: typeof import('./src/components/containers/CreateTaskContainer.vue')['default']
     CreateTaskForm: typeof import('./src/components/CreateTaskForm.vue')['default']
-    Fix: typeof import('./src/components/Fix.vue')['default']
     FixContainer: typeof import('./src/components/containers/FixContainer.vue')['default']
     HistoryContainer: typeof import('./src/components/containers/HistoryContainer.vue')['default']
     HistoryFilters: typeof import('./src/components/filters/HistoryFilters.vue')['default']
@@ -22,5 +21,6 @@ declare module 'vue' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     UserFilter: typeof import('./src/components/filters/UserFilter.vue')['default']
+    ViewFilters: typeof import('./src/components/filters/ViewFilters.vue')['default']
   }
 }

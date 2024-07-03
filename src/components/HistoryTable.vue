@@ -1,38 +1,17 @@
 <template>
-  <v-container class="fill-height p-0 m-0 d-flex align-start">
-    <v-row>
-      <v-col cols="12">
-        <v-card color="surface-variant" rounded="lg" variant="outlined">
-          <v-table fixed-header>
-            <thead>
-              <tr>
-                <th></th>
-                <th>📍</th>
-                <th>Tarefa</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="task in filteredTasks">
-                <td>
-                  {{ getUserName(task.user_id) }}
-                </td>
-                <td>
-                  {{ getChallengeSymbol(task.challenge_id) }}
-                </td>
-                <td>
-                  <p>
-                    {{ task.task_text }}
-                  </p>
-                  <p class="font-weight-thin font-italic">
-                    {{ dayjs(task.created_at).format("D/MM (ddd) HH:mm") }}
-                  </p>
-                </td>
-              </tr>
-            </tbody>
-          </v-table>
-        </v-card>
-      </v-col>
-    </v-row>
+  <v-container class="fill-height d-flex align-start">
+    <v-col cols="12" v-for="task in filteredTasks" class="bg-grey-darken-4">
+      <v-row>
+        <v-col cols="1">{{ getUserName(task.user_id) }}</v-col>
+        <v-col cols="1">{{ getChallengeSymbol(task.challenge_id) }}</v-col>
+        <v-col cols="10">
+          <p>{{ task.task_text }}</p>
+          <p class="font-weight-thin font-italic">
+            {{ dayjs(task.created_at).format("D/MM (ddd) HH:mm") }}
+          </p>
+        </v-col>
+      </v-row>
+    </v-col>
   </v-container>
 </template>
 
@@ -59,6 +38,9 @@ const getUserName = (id: string) => {
 };
 
 const getChallengeSymbol = (id: string) => {
+  if (id === null) {
+    return "🫵";
+  }
   const challenge = props.challenges.find((challenge) => challenge.id === id);
   return challenge?.id ? `${challenge?.emoji}` : "";
 };

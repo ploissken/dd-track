@@ -2,8 +2,13 @@
   <v-sheet class="bg-transparent d-flex ga-2">
     <v-chip
       v-if="allowDisplayAll"
-      @click="$emit('changeChallenge', '')"
-      :color="currentChallengeFilter === '' ? 'primary' : ''"
+      @click="$emit('changeChallenge', 'ALL_CHALLENGES')"
+      :color="
+        currentChallengeFilter === 'ALL_CHALLENGES' ? 'purple-darken-4' : ''
+      "
+      :variant="
+        currentChallengeFilter === 'ALL_CHALLENGES' ? 'flat' : undefined
+      "
     >
       Tudo
     </v-chip>
@@ -37,8 +42,17 @@
       <template v-slot:activator="{ props }">
         <v-chip
           v-bind="props"
-          @click="$emit('changeChallenge')"
-          :color="!currentChallengeFilter ? 'primary' : ''"
+          @click="$emit('changeChallenge', 'PERSONAL_CHALLENGES')"
+          :color="
+            currentChallengeFilter === 'PERSONAL_CHALLENGES'
+              ? 'purple-darken-4'
+              : ''
+          "
+          :variant="
+            currentChallengeFilter === 'PERSONAL_CHALLENGES'
+              ? 'flat'
+              : undefined
+          "
         >
           🫵
         </v-chip>

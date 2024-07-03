@@ -1,7 +1,7 @@
 <template>
-  <v-container class="fill-height p-0 m-0 d-flex align-start justify-start">
+  <v-container class="fill-height pa-0 ma-0 d-flex align-start justify-start">
     <v-row class="justify-center">
-      <v-col cols="12" lg="8">
+      <v-col cols="12">
         <HistoryTable
           :challenges="challenges"
           :filtered-tasks="filteredEvents"
