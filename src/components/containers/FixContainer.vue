@@ -1,10 +1,10 @@
 <template>
-  <v-container class="fill-height p-0 m-0 d-flex align-start justify-start">
-    <v-row class="justify-center">
+  <v-container fluid>
+    <v-row class="justify-center d-flex">
       <v-col cols="12" class="d-flex justify-center">
         <h2 class="ma-2">Fix & Tweaks</h2>
       </v-col>
-      <v-col cols="4">
+      <v-col cols="2">
         <v-row>
           <v-col cols="12" class="d-flex justify-center">
             <v-chip
@@ -41,13 +41,16 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col cols="8">
+      <v-col cols="4" class="border-e-lg">
         <v-textarea
           v-model="response"
           label="response"
           :loading="loading"
           rows="25"
         />
+      </v-col>
+      <v-col cols="6">
+        <CreateTaskContainer />
       </v-col>
     </v-row>
 
@@ -90,6 +93,7 @@ const currentPersonFilter = ref("a5a7c27c-1dfc-4155-804c-e458d24cdba2");
 const pwdField = ref<HTMLInputElement>();
 const validationCount = ref(0);
 import axios from "axios";
+import CreateTaskContainer from "./CreateTaskContainer.vue";
 const router = useRouter();
 
 const users = [

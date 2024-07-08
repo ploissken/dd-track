@@ -1,17 +1,17 @@
 <template>
-  <v-container class="fill-height p-0 m-0 d-flex align-start">
+  <v-container class="fill-height d-flex align-start">
     <v-row class="justify-center">
       <v-col cols="12" lg="7">
         <h2 class="ma-2 d-flex justify-center">Criar Tarefa</h2>
       </v-col>
-      <v-col cols="12" lg="7">
+      <v-col cols="12">
         <v-form
           ref="form"
           v-model="valid"
           :disabled="loading"
           @submit.prevent="handleOnSubmit"
         >
-          <v-card color="surface-variant" rounded="lg" variant="outlined">
+          <v-card color="transparent" rounded="lg">
             <v-row class="mt-2 d-flex justify-center ga-2 pa-2">
               <v-col cols="12">
                 <v-text-field
