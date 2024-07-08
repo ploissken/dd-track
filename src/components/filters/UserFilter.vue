@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import users from "../../assets/users.json";
 
-const props = defineProps({
+defineProps({
   currentPersonFilter: String,
 });
 </script>

@@ -42,12 +42,7 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
-
-export interface Challenge {
-  id: string;
-  name: string;
-  emoji: string;
-}
+import { Challenge } from "../../interfaces/Challenge";
 
 const props = defineProps({
   challenges: Array<Challenge>,

@@ -6,7 +6,7 @@
           class="bg-transparent"
           ref="calendar"
           v-model="initialDate"
-          :events="filteredEvents"
+          :events="calendarEvents"
           :view-mode="type"
           :weekdays="weekday"
         />
@@ -17,22 +17,17 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { CalendarEvent } from "../../interfaces/CalendarEvent";
 
-export interface CalendarEvent {
-  title: String;
-  start: Date;
-  end: Date;
-  color: String;
-}
 defineProps({
   loading: Boolean,
   currentPersonFilter: String,
-  filteredEvents: Array<CalendarEvent>,
+  calendarEvents: Array<CalendarEvent>,
+  currentChallengeFilter: String,
   currentTaskFilter: {
     type: String,
     default: "",
   },
-  currentChallengeFilter: String,
 });
 
 const type = ref("month");

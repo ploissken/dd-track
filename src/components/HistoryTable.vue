@@ -18,15 +18,9 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
 import ptBr from "dayjs/locale/pt-br";
-import { Challenge } from "./HistoryFilters.vue";
+import { Challenge } from "../interfaces/Challenge";
+import { Task } from "../interfaces/Task";
 dayjs.locale(ptBr);
-
-interface Task {
-  user_id: string;
-  task_text: string;
-  challenge_id: string;
-  created_at: string;
-}
 
 const props = defineProps<{
   filteredTasks: Array<Task>;

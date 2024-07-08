@@ -23,11 +23,11 @@
       <v-col v-else cols="12" class="ma-0 pa-0">
         <HistoryContainer
           v-if="viewType === 'table'"
-          :filteredEvents="filteredEvents"
+          :filteredTasks="filteredTasks"
         />
         <CalendarContainer
           v-if="viewType === 'calendar'"
-          :filteredEvents="calendarEvents"
+          :calendarEvents="calendarEvents"
         />
       </v-col>
     </v-row>
@@ -41,6 +41,8 @@ import challenges from "../../assets/challenges.json";
 import users from "../../assets/users.json";
 import CalendarContainer from "./CalendarContainer.vue";
 import HistoryContainer from "./HistoryContainer.vue";
+import { CalendarEvent } from "../../interfaces/CalendarEvent";
+import { Task } from "../../interfaces/Task";
 
 const BOD_ID = users[2].id;
 const loading = ref(true);
@@ -50,14 +52,7 @@ const currentPersonFilter = ref(BOD_ID);
 const rawTaskData = ref([]);
 const viewType = ref("calendar");
 
-export interface CalendarEvent {
-  title: String;
-  start: Date;
-  end: Date;
-  color: String;
-}
-
-const filteredEvents = computed((): any[] => {
+const filteredTasks = computed((): Task[] => {
   const personFilteredTasks =
     currentPersonFilter.value === ""
       ? rawTaskData.value
@@ -86,7 +81,7 @@ const filteredEvents = computed((): any[] => {
 });
 
 const calendarEvents = computed((): CalendarEvent[] => {
-  return filteredEvents.value
+  return filteredTasks.value
     .map(({ task_text, created_at, user_id }) => {
       return {
         title: task_text,

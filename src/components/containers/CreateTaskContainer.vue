@@ -93,7 +93,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 import challenges from "../../assets/challenges.json";
 import axios from "axios";
 

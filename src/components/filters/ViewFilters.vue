@@ -1,25 +1,29 @@
 <template>
   <v-sheet class="bg-transparent d-flex ga-2">
     <v-chip
-      @click="$emit('change:view', 'calendar')"
-      :color="viewType === 'calendar' ? 'purple-darken-4' : undefined"
-      :variant="viewType === 'calendar' ? 'flat' : undefined"
+      v-for="view in views"
+      @click="$emit('change:view', view.name)"
+      :color="viewType === view.name ? 'purple-darken-4' : undefined"
+      :variant="viewType === view.name ? 'flat' : undefined"
     >
-      📆
-    </v-chip>
-    <v-chip
-      @click="$emit('change:view', 'table')"
-      :color="viewType === 'table' ? 'purple-darken-4' : undefined"
-      :variant="viewType === 'table' ? 'flat' : undefined"
-    >
-      📜
+      {{ view.emoji }}
     </v-chip>
   </v-sheet>
 </template>
 
 <script setup lang="ts">
-const props = defineProps({
+defineProps({
   viewType: String,
 });
-console.log(props.viewType);
+
+const views = [
+  {
+    emoji: "📆",
+    name: "calendar",
+  },
+  {
+    emoji: "📜",
+    name: "table",
+  },
+];
 </script>

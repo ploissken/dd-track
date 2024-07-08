@@ -4,7 +4,7 @@
       <v-col cols="12">
         <HistoryTable
           :challenges="challenges"
-          :filtered-tasks="filteredEvents"
+          :filtered-tasks="filteredTasks"
         />
       </v-col>
     </v-row>
@@ -15,12 +15,13 @@
 import challenges from "../../assets/challenges.json";
 import dayjs from "dayjs";
 import ptBr from "dayjs/locale/pt-br";
+import { Task } from "../../interfaces/Task";
 dayjs.locale(ptBr);
 
 defineProps({
   loading: Boolean,
   currentPersonFilter: String,
-  filteredEvents: Array,
+  filteredTasks: Array<Task>,
   currentTaskFilter: {
     type: String,
     default: "",
