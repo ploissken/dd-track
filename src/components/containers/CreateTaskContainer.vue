@@ -61,21 +61,10 @@
                   rounded="0"
                   group
                 >
-                  <v-btn value="0.1">
-                    <v-icon>mdi-star-three-points</v-icon>
-                  </v-btn>
-
-                  <v-btn value="1">
-                    <v-icon>mdi-star-four-points</v-icon>
-                  </v-btn>
-
-                  <v-btn value="1.5">
-                    <v-icon>mdi-star</v-icon>
-                  </v-btn>
-
-                  <v-btn value="2">
-                    <v-icon>mdi-star-plus</v-icon>
-                  </v-btn>
+                  <v-btn value="0.1"> 😁 </v-btn>
+                  <v-btn value="1"> 🙂 </v-btn>
+                  <v-btn value="1.5"> 😪 </v-btn>
+                  <v-btn value="2"> 😮‍💨 </v-btn>
                 </v-btn-toggle>
               </v-col>
               <v-col cols="12" class="d-flex justify-end">
@@ -83,8 +72,9 @@
                   color="deep-purple-accent-3"
                   :loading="loading"
                   type="submit"
-                  >Salvar</v-btn
                 >
+                  Salvar
+                </v-btn>
               </v-col>
             </v-row>
           </v-card>
@@ -97,9 +87,7 @@
       location="top"
       color="deep-purple-accent-4"
     >
-      <v-icon>mdi-check</v-icon>
-
-      Task criada!
+      ✅ Task criada!
     </v-snackbar>
   </v-container>
 </template>
