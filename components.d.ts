@@ -13,6 +13,7 @@ declare module 'vue' {
     CreateTaskContainer: typeof import('./src/components/containers/CreateTaskContainer.vue')['default']
     CreateTaskForm: typeof import('./src/components/CreateTaskForm.vue')['default']
     FixContainer: typeof import('./src/components/containers/FixContainer.vue')['default']
+    GraphicContainer: typeof import('./src/components/containers/GraphicContainer.vue')['default']
     HistoryContainer: typeof import('./src/components/containers/HistoryContainer.vue')['default']
     HistoryFilters: typeof import('./src/components/filters/HistoryFilters.vue')['default']
     HistoryTable: typeof import('./src/components/HistoryTable.vue')['default']

@@ -28,7 +28,7 @@
           :view-type="viewType"
         />
       </v-col>
-      <v-col cols="12" lg="5">
+      <v-col cols="12" lg="4">
         <v-text-field
           v-model="taskTitleFilter"
           @update:modelValue="(newValue) => $emit('filter-by:task', newValue)"

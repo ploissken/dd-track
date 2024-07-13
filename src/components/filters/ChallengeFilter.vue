@@ -1,9 +1,9 @@
 <template>
   <v-sheet class="bg-transparent d-flex ga-2">
     <v-chip
-      @click="$emit('changeChallenge', 'ALL_CHALLENGES')"
-      :color="getColor('ALL_CHALLENGES')"
-      :variant="getVariant('ALL_CHALLENGES')"
+      @click="$emit('changeChallenge', CHALLENGE.all)"
+      :color="getColor(CHALLENGE.all)"
+      :variant="getVariant(CHALLENGE.all)"
     >
       Tudo
     </v-chip>
@@ -27,9 +27,9 @@
       <template v-slot:activator="{ props }">
         <v-chip
           v-bind="props"
-          @click="$emit('changeChallenge', 'PERSONAL_CHALLENGES')"
-          :color="getColor('PERSONAL_CHALLENGES')"
-          :variant="getVariant('PERSONAL_CHALLENGES')"
+          @click="$emit('changeChallenge', CHALLENGE.personal)"
+          :color="getColor(CHALLENGE.personal)"
+          :variant="getVariant(CHALLENGE.personal)"
         >
           🫵
         </v-chip>
@@ -40,6 +40,7 @@
 
 <script setup lang="ts">
 import challenges from "../../assets/challenges.json";
+import { CHALLENGE } from "../../interfaces/Constants";
 
 const emit = defineEmits(["changeChallenge"]);
 const props = defineProps({

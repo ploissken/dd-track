@@ -43,8 +43,9 @@ import CalendarContainer from "./CalendarContainer.vue";
 import HistoryContainer from "./HistoryContainer.vue";
 import { CalendarEvent } from "../../interfaces/CalendarEvent";
 import { Task } from "../../interfaces/Task";
+import { CHALLENGE } from "../../interfaces/Constants";
 
-const BOD_ID = users[2].id;
+const BOD_ID = users[1].id;
 const loading = ref(true);
 const currentChallengeFilter = ref(challenges[1].id);
 const currentTaskFilter = ref("");
@@ -61,9 +62,9 @@ const filteredTasks = computed((): Task[] => {
         );
 
   const challengeFilteredTasks =
-    currentChallengeFilter.value === "ALL_CHALLENGES"
+    currentChallengeFilter.value === CHALLENGE.all
       ? personFilteredTasks
-      : currentChallengeFilter.value === "PERSONAL_CHALLENGES"
+      : currentChallengeFilter.value === CHALLENGE.personal
         ? personFilteredTasks.filter(
             ({ challenge_id }) => challenge_id === null,
           )
