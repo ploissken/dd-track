@@ -1,5 +1,5 @@
 <template>
-  <v-container class="fill-height d-flex align-start">
+  <v-container class="ma-0 pa-0 fill-height d-flex align-start">
     <v-col cols="12" v-for="task in filteredTasks" class="bg-grey-darken-4">
       <v-row>
         <v-col cols="1">{{ getUserName(task.user_id) }}</v-col>

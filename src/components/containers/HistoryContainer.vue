@@ -1,15 +1,31 @@
 <template>
-  <v-container class="fill-height pa-0 ma-0 d-flex align-start justify-start">
+  <v-container class="fill-height d-flex align-start justify-start">
     <v-row class="justify-center">
       <v-col cols="12" lg="4">
-        <DoughnutChart :chartData="userDistribuitonData" />
-        <BarChart
-          class="mt-4"
-          :chartData="locationDistribuitonData"
-          :options="{ plugins: { legend: { display: false } } }"
-        />
+        <v-row>
+          <v-col cols="6" lg="12">
+            <label> tasks by user </label>
+            <DoughnutChart
+              class="mb-6"
+              :style="{
+                height: '200px',
+              }"
+              :chartData="userDistribuitonData"
+            />
+          </v-col>
+          <v-col cols="6" lg="12">
+            <label class="mt-6">tasks by place </label>
+            <BarChart
+              :style="{
+                height: '200px',
+              }"
+              :chartData="locationDistribuitonData"
+              :options="{ plugins: { legend: { display: false } } }"
+            />
+          </v-col>
+        </v-row>
       </v-col>
-      <v-col cols="8">
+      <v-col cols="12" lg="8">
         <HistoryTable
           :challenges="challenges"
           :filtered-tasks="filteredTasks"
@@ -60,7 +76,7 @@ const userDistribuitonData = computed(() => {
 
 const locationDistribuitonData = computed(() => {
   return {
-    labels: challenges.map(({ name }) => name),
+    labels: challenges.map(({ emoji }) => emoji),
     datasets: [
       {
         data: challenges.map(

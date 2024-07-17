@@ -6,6 +6,7 @@
           class="bg-transparent"
           ref="calendar"
           v-model="initialDate"
+          hide-header
           :events="calendarEvents"
           :view-mode="type"
           :weekdays="weekday"
