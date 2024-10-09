@@ -4,7 +4,7 @@
       <v-col cols="12" class="d-flex justify-center">
         <h2 class="ma-2">Fix & Tweaks</h2>
       </v-col>
-      <v-col cols="2">
+      <v-col cols="3">
         <v-row>
           <v-col cols="12" class="d-flex justify-center">
             <v-chip
@@ -41,7 +41,7 @@
           </v-col>
         </v-row>
       </v-col>
-      <v-col cols="4" class="border-e-lg">
+      <v-col cols="4">
         <v-textarea
           v-model="response"
           label="response"
@@ -49,7 +49,7 @@
           rows="25"
         />
       </v-col>
-      <v-col cols="6">
+      <v-col cols="7">
         <CreateTaskContainer />
       </v-col>
     </v-row>
@@ -95,7 +95,7 @@ const validationCount = ref(0);
 import axios from "axios";
 import CreateTaskContainer from "./CreateTaskContainer.vue";
 const router = useRouter();
-
+const apiURL = "https://habitica.txto.com.br";
 const users = [
   { label: "👩🏽‍🌾", id: "a5a7c27c-1dfc-4155-804c-e458d24cdba2" },
   { label: "👨🏼‍💻", id: "9ae7f3de-9061-4f4b-829c-586dd7dcc12a" },
@@ -105,10 +105,7 @@ const getUserProfile = () => {
   loading.value = true;
   response.value = "";
   axios
-    .get(
-      `http://localhost:9000/get-user-profile?id=${currentPersonFilter.value}`,
-    )
-    // .post("https://habitica.txto.com.br/create-task", newTask)
+    .get(`${apiURL}/get-user-profile?id=${currentPersonFilter.value}`)
     .then((res) => {
       response.value = JSON.stringify(res.data, 3, 3);
       loading.value = false;
@@ -119,12 +116,11 @@ const getUserTasks = () => {
   loading.value = true;
   response.value = "";
   axios
-    .get(`http://localhost:9000/get-user-tasks?id=${currentPersonFilter.value}`)
-    // .post("https://habitica.txto.com.br/create-task", newTask)
+    .get(`${apiURL}/get-user-tasks?id=${currentPersonFilter.value}`)
     .then((res) => {
       console.log(
         "got the res",
-        res.data.filter((todos) => todos.challenge?.id),
+        res.data.filter((todos) => todos.challenge?.id)
       );
       response.value = JSON.stringify(res.data, 3, 3);
       loading.value = false;
@@ -136,13 +132,9 @@ const postTaskScore = () => {
   loading.value = true;
   response.value = "";
   axios
-    .post(
-      `http://localhost:9000/post-task-score?id=${currentPersonFilter.value}`,
-      {
-        taskId: taskId.value,
-      },
-    )
-    // .post("https://habitica.txto.com.br/create-task", newTask)
+    .post(`${apiURL}/post-task-score?id=${currentPersonFilter.value}`, {
+      taskId: taskId.value,
+    })
     .then((res) => {
       console.log("got the res", res.data);
       response.value = JSON.stringify(res.data, 3, 3);
@@ -155,10 +147,9 @@ const deleteTask = () => {
   loading.value = true;
   response.value = "";
   axios
-    .post(`http://localhost:9000/delete-task?id=${currentPersonFilter.value}`, {
+    .post(`${apiURL}/delete-task?id=${currentPersonFilter.value}`, {
       taskId: taskId.value,
     })
-    // .post("https://habitica.txto.com.br/create-task", newTask)
     .then((res) => {
       console.log("got the res", res.data);
       response.value = JSON.stringify(res.data, 3, 3);
