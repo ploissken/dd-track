@@ -8,7 +8,7 @@
         <MultiselectChips
           :options="challengeOptions"
           :selectedIds="currentChallengeFilter"
-          @updated="(challengeId) => $emit('changeChallenge', challengeId)"
+          @updated="(challengeId) => $emit('change:challenge', challengeId)"
         />
       </v-col>
       <v-col>
@@ -16,7 +16,7 @@
         <MultiselectChips
           :options="users"
           :selectedIds="currentPersonFilter"
-          @updated="(updatedArray) => $emit('changePerson', updatedArray)"
+          @updated="(updatedArray) => $emit('change:person', updatedArray)"
         />
       </v-col>
       <v-col>

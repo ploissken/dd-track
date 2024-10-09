@@ -8,8 +8,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     CalendarContainer: typeof import('./src/components/containers/CalendarContainer.vue')['default']
-    CalendarFilters: typeof import('./src/components/filters/CalendarFilters.vue')['default']
-    ChallengeFilter: typeof import('./src/components/filters/ChallengeFilter.vue')['default']
     CreateTaskContainer: typeof import('./src/components/containers/CreateTaskContainer.vue')['default']
     FixContainer: typeof import('./src/components/containers/FixContainer.vue')['default']
     HistoryContainer: typeof import('./src/components/containers/HistoryContainer.vue')['default']
@@ -20,7 +18,6 @@ declare module 'vue' {
     MultiselectChips: typeof import('./src/components/filters/MultiselectChips.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    UserFilter: typeof import('./src/components/filters/UserFilter.vue')['default']
     ViewFilters: typeof import('./src/components/filters/ViewFilters.vue')['default']
   }
 }
