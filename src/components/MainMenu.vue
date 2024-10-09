@@ -5,7 +5,7 @@
     </template>
     <v-tabs color="white">
       <RouterLink v-for="link in menuItems" :to="link.destiny">
-        <v-tab :disabled="link.disabled">{{ link.emoji }}</v-tab>
+        <v-tab>{{ link.emoji }}</v-tab>
       </RouterLink>
     </v-tabs>
   </v-toolbar>
@@ -14,7 +14,6 @@
 <script setup lang="ts">
 const menuItems = [
   { destiny: "/", emoji: "🏠" },
-  { destiny: "/", emoji: "📊", disabled: true },
   { destiny: "/fix", emoji: "🔧" },
 ];
 </script>

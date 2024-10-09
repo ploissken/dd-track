@@ -3,8 +3,8 @@
     <v-col cols="12" class="ma-0 pa-0">
       <HomeFilters
         @change:view="(view: string) => (viewType = view)"
-        @changePerson="(id: [string]) => (currentPersonFilter = id)"
-        @changeChallenge="(id: [string]) => (currentChallengeFilter = id)"
+        @change:person="(id: [string]) => (currentPersonFilter = id)"
+        @change:challenge="(id: [string]) => (currentChallengeFilter = id)"
         @filter-by:task="(text: string) => (currentTaskFilter = text)"
         :challenges="challenges"
         :current-person-filter="currentPersonFilter"
@@ -43,7 +43,7 @@ import CalendarContainer from "./CalendarContainer.vue";
 import HistoryContainer from "./HistoryContainer.vue";
 import { CalendarEvent } from "../../interfaces/CalendarEvent";
 import { Task } from "../../interfaces/Task";
-import { CHALLENGE } from "../../interfaces/Constants";
+import { useDate } from "vuetify";
 
 const BOD_ID = users[1].id;
 const loading = ref(true);
@@ -52,23 +52,17 @@ const currentTaskFilter = ref("");
 const currentPersonFilter = ref([BOD_ID]);
 const rawTaskData = ref([]);
 const viewType = ref("calendar");
+const date = useDate();
 
 const filteredTasks = computed((): Task[] => {
-  const personFilteredTasks = rawTaskData.value.filter(({ user_id }) =>
-    currentPersonFilter.value.includes(user_id),
+  return rawTaskData.value.filter(
+    ({ user_id, challenge_id, task_text }) =>
+      currentPersonFilter.value.includes(user_id) &&
+      currentChallengeFilter.value.includes(challenge_id) &&
+      (task_text as string)
+        .toLowerCase()
+        .includes(currentTaskFilter.value.toLowerCase())
   );
-
-  const challengeFilteredTasks = personFilteredTasks.filter(
-    ({ challenge_id }) => currentChallengeFilter.value.includes(challenge_id),
-  );
-
-  const textFilteredTasks = challengeFilteredTasks.filter(({ task_text }) =>
-    (task_text as string)
-      .toLowerCase()
-      .includes(currentTaskFilter.value.toLowerCase()),
-  );
-
-  return textFilteredTasks;
 });
 
 const calendarEvents = computed((): CalendarEvent[] => {
@@ -76,8 +70,8 @@ const calendarEvents = computed((): CalendarEvent[] => {
     .map(({ task_text, created_at, user_id }) => {
       return {
         title: task_text,
-        start: new Date(created_at),
-        end: new Date(created_at),
+        start: new Date(date.addHours(created_at, -3) as string),
+        end: new Date(date.addHours(created_at, -3) as string),
         color: user_id === BOD_ID ? "deep-purple" : "green",
       };
     })
