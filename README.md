@@ -9,7 +9,7 @@ My wife and I check off specific tasks every time we mop the floor, cook our lun
 ## ⚙️ Tech used
 
 Created with [vuetify create](https://github.com/vuetifyjs/create)
-Backend is basically a node.js [webhook](https://habitica.fandom.com/wiki/Webhooks) that listens to Habitica's task completion event. It then stores this data into a postgres database. Something like this:
+Backend is basically a node.js [webhook](https://habitica.fandom.com/wiki/Webhooks) that listens to Habitica's task completion event. It then stores this data into a postgres database. Something like this [check the source code here](https://github.com/ploissken/habitracker):
 
 ```
   app.post("/task-webhook", function (req, res) {
