@@ -74,7 +74,7 @@
         </v-row>
         <template v-slot:actions>
           <v-spacer />
-          <v-btn @click="validatePassword" color="primary"> Taí tio </v-btn>
+          <v-btn @click="validatePassword" color="primary"> Taí pai </v-btn>
         </template>
       </v-card>
     </v-dialog>
@@ -118,10 +118,6 @@ const getUserTasks = () => {
   axios
     .get(`${apiURL}/get-user-tasks?id=${currentPersonFilter.value}`)
     .then((res) => {
-      console.log(
-        "got the res",
-        res.data.filter((todos) => todos.challenge?.id)
-      );
       response.value = JSON.stringify(res.data, 3, 3);
       loading.value = false;
     });
@@ -136,7 +132,6 @@ const postTaskScore = () => {
       taskId: taskId.value,
     })
     .then((res) => {
-      console.log("got the res", res.data);
       response.value = JSON.stringify(res.data, 3, 3);
       loading.value = false;
     });
@@ -151,22 +146,17 @@ const deleteTask = () => {
       taskId: taskId.value,
     })
     .then((res) => {
-      console.log("got the res", res.data);
       response.value = JSON.stringify(res.data, 3, 3);
       loading.value = false;
     });
 };
 
 const validatePassword = () => {
-  if (passwordValue.value === "Polegata_1234") {
-    dialogOpen.value = false;
-    return;
-  }
+  // TODO: check password in the backend
 
   validationCount.value = validationCount.value + 1;
 
-  if (validationCount.value > 1) {
-    console.log(router);
+  if (validationCount.value > 2) {
     router.push("/");
   }
 };
